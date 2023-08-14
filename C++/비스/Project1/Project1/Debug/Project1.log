@@ -1,0 +1,5 @@
+﻿  Source1.cpp
+C:\Users\Kor_SW_Developer\Documents\프로그래밍 폴더\C++ 폴더\비스\Project1\Project1\Source1.cpp(5,9): error C2015: too many characters in constant
+C:\Users\Kor_SW_Developer\Documents\프로그래밍 폴더\C++ 폴더\비스\Project1\Project1\Source1.cpp(5,22): error C2664: 'int printf(const char *const ,...)': cannot convert argument 1 from 'int' to 'const char *const '
+C:\Users\Kor_SW_Developer\Documents\프로그래밍 폴더\C++ 폴더\비스\Project1\Project1\Source1.cpp(5,9): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(948,37): message : see declaration of 'printf'

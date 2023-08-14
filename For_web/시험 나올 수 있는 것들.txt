@@ -1,0 +1,21 @@
+중요 키워드 
+
+table 테이블 정의(?)
+thead 테이블 최상위
+tbody 테이블 중앙
+tfoot 테이블 최하위
+tr 행
+th 열
+td 열
+
+alt + l + o 오픈 라이브 서버 실행
+
+colspan 셀 너비 지정
+rowspan 셀 높이 지정
+<img/>
+    src 이미지 경로 지정
+    alt 이미지 X => 나오는 글자 지정
+    width 이미지 너비 지정
+    height 이미지 높이 지정
+<div>
+    블럭으로 인식해버림     

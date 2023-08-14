@@ -1,0 +1,107 @@
+<!Doctype html>
+
+<html>
+    
+<head>
+    <title>검색 웹 사이트 모음</title>
+</head>
+<style>
+    h1{
+        background-color: rgb(190, 186, 186);
+        font-style: oblique;
+    }
+    h3{
+        background-color: antiquewhite;
+    }
+    body {
+        background-color: white;
+    }
+    a {
+        text-decoration-line: none;
+      }
+    div.box {
+        height: auto; 
+        width: 100%; 
+        border-bottom:3px solid black;
+    } 
+    footer.box {
+        height: auto; 
+        width: 100%; 
+        border-top:3px solid black;
+    } 
+    img {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+<embed src="bolo.mp3" autostart="true" hidden="true" loop="true">
+
+<body>
+    
+    <div class = "box">
+        <h1 class = "top">주 검색 웹사이트</h1>
+        <h3><br>사용자가 주로 검색하는 웹사이트들을 모아두었습니다.<br>
+        <br>아래에서 이미지를 하면 이동됩니다.<br><br></h3>
+    </div>
+    <div class = "box">
+        <br><br>
+        <div>
+            <a href="https://www.google.com/"><img src = "google.png" style = ></a>
+            <a href="https://www.naver.com/">
+                <img src = "naver.png" style = 
+                "left: 100px;
+                position: relative;"
+                >
+            </a>            
+        </div>
+        <div>
+            <a href="https://www.daum.com/"><img src = "daum.png"></a>
+            <a href="https://www.zum.com/">
+                <img src = "zum.png" style = 
+                "left: 100px;
+                position: relative;"
+                >
+            </a>
+        </div>
+        
+    </div>
+    <div>
+        <h3><br>문의 사항은 아래 입력 방식에 맞추어 기재 해주세요.<br><br></h3>
+        <tr>
+            <td><label for="username">이름</label></td>
+            <td><input id="username" type="text" name="username" placeholder="이름을 입력하세요." /></td>
+        </tr><br><br>
+    
+        <tr>
+            <td><label for="phone number">휴대전화 번호 </label></td>
+            <td><input id="phone number" type="number" name="number" placeholder="휴대전화 번호를 입력하세요" /></td>
+        </tr><br><br>
+    
+        <tr>
+            <td><label for="email">이메일 </label></td>
+            <td><input id="email" type="text" name="email" placeholder="이메일을 입력하세요" /></td>
+        </tr><br><br>
+
+        <tr>
+            <td><label for="inquiry">문의 사항 </label></td>
+            <td><input id="inquiry" type="text" name="inquiry" placeholder="문의 사항을 입력하세요" /></td>
+        </tr><br><br><br>
+    
+        <input type="submit" value="제출" />
+    </div><br><br>
+</body>
+<footer class="box" id="footer">
+    <h1>개발자 : 권태웅
+        <br>이메일 : rnjsxodnd1091@gmail.com<br>
+        현재 날짜 =>
+        <script>
+            const d = new Date();
+            const year = d.getFullYear();
+            const month = d.getMonth()+1;
+            const date = d.getDate();
+            document.write(year+" : "+(("00"+month.toString()).slice(-2))+" : " +(("00"+date.toString()).slice(-2)));
+        </script>
+    </h1>
+</footer>
+</html>
