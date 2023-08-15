@@ -1,3 +1,0 @@
-C:/AboutProgramming/programming_folder/build/CMakeFiles/jsi.dir
-C:/AboutProgramming/programming_folder/build/CMakeFiles/ALL_BUILD.dir
-C:/AboutProgramming/programming_folder/build/CMakeFiles/ZERO_CHECK.dir
