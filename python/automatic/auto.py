@@ -19,7 +19,7 @@ pyautogui.keyDown('command')
 pyautogui.press('v')
 pyautogui.keyUp('command')
 
-a = pyautogui.alert(text='내용입니다', title='제목입니다', button='OK')
+a = pyautogui.alert(text='나가려면 아래 버튼 클릭', title='경고', button='OK')
 print(a)
 #안녕하세요
 #안녕하세요
