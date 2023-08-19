@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib
 import cv2
 
-path = 'C:/Users/dotor/OneDrive/문서/AboutProgramming/programming_folder/PYTHON/py_opencv'
+path = '/Users/kwonteawoong/programming/python/py_opencv'
 file_name = 'testing.jpg'
 
 
