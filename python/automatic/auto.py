@@ -21,5 +21,4 @@ pyautogui.keyUp('command')
 
 a = pyautogui.alert(text='나가려면 아래 버튼 클릭', title='경고', button='확인')
 print(a)
-#안녕하세요
-#안녕하세요
+#변경됨 first time
