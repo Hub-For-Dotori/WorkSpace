@@ -1,26 +1,87 @@
-import numpy as np
-import matplotlib
 import cv2
+import mediapipe as mp # 손가락 인식을 위한 패키지 임포트
 
-path = '/Users/kwonteawoong/programming/python/py_opencv'
-file_name = 'testing.jpg'
+mp_drawing = mp.solutions.drawing_utils
+mp_hands = mp.solutions.hands
+
+volume = 0        
+OnOff = False # 소리 조절 고정 모드
 
 
-def showImage(path,file_name):
-    full_path = path+'/'+file_name    
-    img_array = np.fromfile(full_path, np.uint8)
-    print("이미지 배열 : ",img_array)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+cap = cv2.VideoCapture(0) # 카메라 설정
+
+
+def volumeMaxMinCheck(volume):
+    if volume >= 100:
+        volume = 100
+    if volume <= 0:
+        volume = 0 
+    return volume
     
-    print("\n 이미지 : ")
-    print(img)
+def volumeFixONOFF(ring_diff):
+    if ring_diff > 50:
+        mode = True
+    if ring_diff <= 50:
+        mode = False   
+    return mode
+        
 
-    cv2.imshow('model',img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
-showImage(path,file_name)
+with mp_hands.Hands(
+    max_num_hands=1, # 최대 손 인식 개수
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5) as hands:
 
-# 경로 한글 이슈 발생시 참고 사항 https://bskyvision.com/entry/python-cv2imread-%ED%95%9C%EA%B8%80-%ED%8C%8C%EC%9D%BC-%EA%B2%BD%EB%A1%9C-%EC%9D%B8%EC%8B%9D%EC%9D%84-%EB%AA%BB%ED%95%98%EB%8A%94-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95
-# OpenCV 사용법 https://076923.github.io/posts/Python-opencv-1/ || https://blog.naver.com/samsjang/220499281999
-# OpenCV 함수 정리 https://deep-learning-study.tistory.com/99 || https://bskyvision.com/entry/pythonopencv-opencv-python-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%9C%A0%EC%9A%A9%ED%95%9C-%ED%95%A8%EC%88%98%EB%93%A4-%EC%A0%95%EB%A6%AC
+    while cap.isOpened():
+        success, image = cap.read() # 카메라 인식
+        if not success:
+            continue
+
+        image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+        results = hands.process(image)
+
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+
+        if results.multi_hand_landmarks:
+            
+            for hand_landmarks in results.multi_hand_landmarks:
+                
+                thumb = hand_landmarks.landmark[4] # 엄지
+                index = hand_landmarks.landmark[8] # 검지
+                
+                ring_tip = hand_landmarks.landmark[16] # 약지 끝
+                ring_mcp = hand_landmarks.landmark[13] # 약지 시작
+                    
+                ring_diff = abs(ring_tip.y - ring_mcp.y)
+                    
+                ring_diff = int(ring_diff * 220)
+                OnOff = volumeFixONOFF(ring_diff)
+                
+                if OnOff == False: # 약지 접힘 : 볼륨 조절 // 약지 펴짐 : 볼륨 고정
+
+                    diff = abs(index.y - thumb.y) # 검지와 엄지의 y좌표 차이를 통해 값을 지정함
+
+                    volume = int(diff * 220) # 이때의 diff 값은 실수이므로 정수형으로 만들어주어야함. 추가적으로 거리에 따라서 계산 값이 달라지므로 개선은 필요할 듯.
+                    volume = volumeMaxMinCheck(volume) # 최댓값 최솟값 체크
+                
+                cv2.putText(
+                    image, text='testing..', org=(10, 30),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+                    color=255, thickness=2)
+                cv2.putText(
+                    image, text='Volume: %d' % volume, org=(10, 60),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+                    color=255, thickness=2) # volume 값 텍스트 인디케이터
+                cv2.putText(
+                    image, text='mode: %d' % OnOff, org=(10, 90),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+                    color=255, thickness=2) # volume 값 텍스트 인디케이터
+
+                mp_drawing.draw_landmarks(
+                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+        cv2.imshow('image', image) # 카메라 화면 출력
+        if cv2.waitKey(1) == ord('q'):
+            break
+
+    cap.release()
