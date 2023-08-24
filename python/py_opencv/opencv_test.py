@@ -86,4 +86,4 @@ with mp_hands.Hands(
 
     cap.release()
 
-    # 확인
+    print("끝")
