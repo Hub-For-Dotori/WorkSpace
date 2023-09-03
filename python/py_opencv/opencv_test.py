@@ -78,8 +78,8 @@ with mp_hands.Hands(
                     color=255, thickness=2) # volume 값 텍스트 인디케이터
 
                 mp_drawing.draw_landmarks(
-                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
+                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS) # 손에 있는 랜드마크를 그리기 위한 코드
+                    
         cv2.imshow('image', image) # 카메라 화면 출력
         if cv2.waitKey(1) == ord('q'):
             break
