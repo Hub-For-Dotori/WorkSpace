@@ -87,3 +87,4 @@ with mp_hands.Hands(
     cap.release()
 
     print("끝")
+    print("code uploading test..")
