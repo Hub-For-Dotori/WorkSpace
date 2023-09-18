@@ -10,7 +10,7 @@ topics = [ # 리스트를 큰 저장소로 잡고 세부 내용은 딕셔너리�
 def HTMLTemplate(articleTag, id=None): # HTML의 탬플릿 지정해줌.
     global topics # 함수 밖의 topics를 사용하기 위함.
     contextUI = ''
-    if id != None:
+    if id != None: # 빈 페이지가 아닌 특정 게시물을 클릭 했을 때, 삭제와 수정 기능을 띄움
         contextUI = f'''
             <li>
                 <form action="/delete/" method="post">
@@ -21,14 +21,17 @@ def HTMLTemplate(articleTag, id=None): # HTML의 탬플릿 지정해줌.
             <li>
                 <a href = "/update/{id}">update</a>
             <li>
-        '''
+        ''' # 삭제의 경우 POST 방식으로 하며, update는 GET방식으로 수정 페이지로 들어가서 POST 요청을 하여 수정함.
     ol = '' # ol 태그 초기화
     for topic in topics: # topics의 0번 부터 topic으로 불러옴.
-        ol += f'<li><a href="/read/{topic["id"]}">{topic["title"]}</a></li>' # topic
+        ol += f'<li><a href="/read/{topic["id"]}">{topic["title"]}</a></li>' # 읽어온 데이터의 id, title 값을 가져와서 html로 변환함.
     return f'''
     <html>
+    <title>TW의 웹 페이지</title>
     <body>
         <h1><a href = "/">TW Page</a></h1>
+        <li><a href = "https://www.google.com">구글</a></li>
+        <li><a href = "https://www.naver.com">네이버</a></li>
         <ul>
             {ol}
         </ul>
