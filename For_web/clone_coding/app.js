@@ -22,9 +22,10 @@ function onLoginSubmit(event){ // 브라우저가 자동으로 인자를 넘겨�
 }
 
 function toggleGreeting(){ // 인사 창 함수화
+    initBtn.classList.remove(HIDDEN_CLASSNAME); // 초기화 버튼 확실하게 뜨게 하기.
     username = localStorage.getItem(USERNAME_KEY); // 로컬 저장소에서 저장된 이름 불러오기.
     greeting.innerText = `hello ${username}`; // string formating
-    greeting.classList.toggle(HIDDEN_CLASSNAME); 
+    greeting.classList.toggle(HIDDEN_CLASSNAME); // 인사 표시.
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
@@ -32,8 +33,9 @@ initBtn.addEventListener("click",initClicked);
 
 const savedUsername = localStorage.getItem(USERNAME_KEY); // 유저 이름 저장 유무
 
-if (savedUsername == null){
-    loginForm.classList.toggle(HIDDEN_CLASSNAME);
+if (savedUsername == null){ // 확실하게 보이고 감출 땐, toggle보다 add, remove를 쓰는게 좋을 것 같음.
+    initBtn.classList.toggle(HIDDEN_CLASSNAME); // 초기 입력시 초기화 버튼 감춤.
+    loginForm.classList.toggle(HIDDEN_CLASSNAME); // 초기 입력시 보이게 하기
 }
 else{
     toggleGreeting();
