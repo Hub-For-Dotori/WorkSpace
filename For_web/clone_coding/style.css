@@ -1,0 +1,16 @@
+#init{
+    background-color: rgb(84, 0, 0);
+    color: beige;
+    font-size: 30px;
+    width: 100px;
+    height: 50px;
+}
+body{
+    background-color: rgb(66, 66, 66);
+}
+h1{
+    color: rgb(187, 187, 162);
+}
+.hidden{
+    display: none;
+}
