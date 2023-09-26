@@ -1,4 +1,4 @@
-#init{
+#init{ /*초기화 스타일*/
     background-color: rgb(84, 0, 0);
     color: beige;
     font-size: 30px;
@@ -14,4 +14,7 @@ h1{
 }
 .hidden{
     display: none;
+}
+#clock{
+    color: rgb(187, 187, 162);
 }

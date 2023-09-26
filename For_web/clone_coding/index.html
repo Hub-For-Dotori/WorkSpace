@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
+<!-- html코드에 css와 js 파일을 폴더에 따로 분리 후 저장하고 싶다면, 폴더 위치와 html 코드 위치를 동일한 곳에 두어야 함. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <title>Momentum App</title>
 </head>
 <body>
@@ -20,7 +21,9 @@
         />
         <input type="submit" value="Log In"/>
     </form>
-    <h1 id="greeting" class="hidden"></h1>
-    <script src="app.js"></script>
+    <h1 id = "greeting" class="hidden"></h1>
+    <h2 id = "clock">00:00:00</h2>
+    <script src="js/greetings.js"></script>
+    <script src="js/clock.js"></script>
 </body>
 </html>
