@@ -9,12 +9,23 @@
 body{
     background-color: rgb(66, 66, 66);
 }
-h1{
+h1, span, #clock{ /*color setting*/
     color: rgb(187, 187, 162);
 }
 .hidden{
     display: none;
 }
-#clock{
-    color: rgb(187, 187, 162);
+span{
+    font-size: x-large;
+}
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: -1;
+    opacity: 80%;
 }
