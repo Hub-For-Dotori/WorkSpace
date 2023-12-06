@@ -12,4 +12,4 @@ const bgImage = document.createElement("img"); // img 태그를 생성함.
 
 bgImage.src = `img/${randomImage}`; // img 태그의 이미지 소스를 가져옴.
 
-document.body.appendChild(bgImage); // html에 img 태그를 추가함.
+document.body.appendChild(bgImage); // html에 img 태그를 추가함. (append == 맨 뒤, prepend == 맨 앞)
